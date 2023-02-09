@@ -10,8 +10,8 @@ let getComputerChoice = () => {
 }
 
 function playRound(playerSelection, computerSelection){
-    let pToLower = playerSelection.toLowerCase();
-    let cToLower = computerSelection.toLowerCase();
+    let pToLower = String(playerSelection.toLowerCase());
+    let cToLower = String(computerSelection.toLowerCase());
 
     if (pToLower === cToLower){
         return "Draw - This game is a Tie!";
@@ -22,5 +22,14 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-// const cVar = getComputerChoice();
-// console.log(playRound("scissors", cVar));
+
+// const plChoice = "scissors";
+
+
+function game(){
+    for (let i = 0; i < 5; i++){
+        let compChoice = getComputerChoice();
+        let userInput = prompt("Rock, Paper, Scissors?");
+        console.log(playRound(userInput, compChoice));
+    }
+}
