@@ -1,21 +1,19 @@
 let getComputerChoice = () => {
     let choice = Math.floor(Math.random() * 3);
     if (choice === 1){
-        return "Rock";
+        return "rock";
     } else if (choice === 2){
-        return "Paper";
+        return "paper";
     } else {
-        return "Scissors";
+        return "scissors";
     }
 }
 
 function playRound(playerSelection, computerSelection){
-    let pToLower = String(playerSelection.toLowerCase());
-    let cToLower = String(computerSelection.toLowerCase());
-
-    if (pToLower === cToLower){
-        return "Draw - This game is a Tie!";
-    } else if (pToLower === "rock" && cToLower === "scissors" || pToLower === "paper" && cToLower === "rock" || pToLower === "scissors" && cToLower === "paper"){
+    if (playerSelection === computerSelection){
+        return "Draw - This game is a Tie! Selection - " + playerSelection.toUpperCase();
+    } else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && 
+                computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper"){
         return `You win! ${playerSelection} beats ${computerSelection}.`;
     } else{
         return `You lost! ${computerSelection} beats ${playerSelection}`;
@@ -23,13 +21,30 @@ function playRound(playerSelection, computerSelection){
 }
 
 
-// const plChoice = "scissors";
+const container = document.querySelector('#container');
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorBtn = document.querySelector('#scissors');
+
+const result = document.createElement('div');
+result.style.backgroundColor = 'white';
+result.style.fontSize ='42px';
+
+rockBtn.addEventListener('click', ()=>{
+    let theResult = playRound('rock', getComputerChoice());
+    result.textContent = theResult;
+});
+
+paperBtn.addEventListener('click', ()=>{
+    let theResult = playRound('paper', getComputerChoice());
+    result.textContent = theResult;
+});
+
+scissorBtn.addEventListener('click', ()=>{
+    let theResult = playRound('scissors', getComputerChoice());
+    result.textContent = theResult;
+});
 
 
-function game(){
-    for (let i = 0; i < 5; i++){
-        let compChoice = getComputerChoice();
-        let userInput = prompt("Rock, Paper, Scissors?");
-        console.log(playRound(userInput, compChoice));
-    }
-}
+container.appendChild(result);
+

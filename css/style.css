@@ -1,0 +1,12 @@
+#container{
+    background-color: #F0EEED;
+    width: 70%;
+    height: 30rem;
+    margin: auto;
+    text-align: center;
+}
+
+button{
+    width: 10rem;
+    height: 10rem;
+}
